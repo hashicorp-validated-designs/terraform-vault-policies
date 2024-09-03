@@ -1,0 +1,11 @@
+
+# Allow listing of secrets for the KV v1 engine at ${kvv1_engine_path}
+path "${namespace}${kvv1_engine_path}" {
+	capabilities = ["list"]
+}
+
+# Allow create, update, delete and read access for the secret ${kvv1_secret_path} in KV v1 engine ${kvv1_engine_path}
+path "${namespace}${kvv1_engine_path}/${kvv1_secret_path}" {
+	capabilities = ["create", "update", "read", "delete"]
+}
+

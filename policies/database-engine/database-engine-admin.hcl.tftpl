@@ -1,0 +1,26 @@
+
+# Allow listing of db connections for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/config" {
+	capabilities = ["list"]
+}
+
+# Allow management of db ${connection} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/config/${connection}" {
+	capabilities = ["create", "update", "read", "delete"]
+}
+
+# Allow reset of db connection ${connection} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/reset/${connection}" {
+	capabilities = ["update"]
+}
+
+# Allow rotation of root password for ${connection} in the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/rotate-root/${connection}" {
+	capabilities = ["update"]
+}
+
+# Allow plugin reload for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/reload/+" {
+	capabilities = ["update"]
+}
+

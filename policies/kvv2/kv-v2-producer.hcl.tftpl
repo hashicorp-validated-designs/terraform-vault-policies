@@ -1,0 +1,31 @@
+
+# Allow listing of secrets for KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/metadata" {
+	capabilities = ["list"]
+}
+
+# Allow reading and updating metadata for the secret at ${kvv2_secret_path} in the KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/metadata/${kvv2_secret_path}" {
+	capabilities = ["update", "read"]
+}
+
+# Allow reading and managing the secret at ${kvv2_secret_path} in the KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/data/${kvv2_secret_path}" {
+	capabilities = ["create", "update", "patch", "read"]
+}
+
+# Allow soft deleting the last version the secret at ${kvv2_secret_path} in the KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/data/${kvv2_secret_path}" {
+	capabilities = ["delete"]
+}
+
+# Allow soft deleting secret versions
+path "${namespace}${kvv2_engine_path}/delete/${kvv2_secret_path}" {
+	capabilities = ["update"]
+}
+
+# Allow undeleting secret versions that have been soft deleted
+path "${namespace}${kvv2_engine_path}/undelete/${kvv2_secret_path}" {
+	capabilities = ["update"]
+}
+

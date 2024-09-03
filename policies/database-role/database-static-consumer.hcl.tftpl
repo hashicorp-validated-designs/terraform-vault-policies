@@ -1,0 +1,11 @@
+
+# Allow listing of static roles for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-roles" {
+	capabilities = ["list"]
+}
+
+# Allow access to get static credentials for the ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-creds/${role}" {
+	capabilities = ["read"]
+}
+

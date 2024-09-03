@@ -1,0 +1,31 @@
+
+# Allow listing of static roles for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-roles" {
+	capabilities = ["list"]
+}
+
+# Allow access to get static credentials for the ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-creds/${role}" {
+	capabilities = ["read"]
+}
+
+# Allow access to create static credentials for the ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-creds/${role}" {
+	capabilities = ["create", "update"]
+}
+
+# Allow access to rotate the static credentials for the ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/rotate-role/${role}" {
+	capabilities = ["update"]
+}
+
+# Allow deletion of the ${role} static role for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-roles/${role}" {
+	capabilities = ["delete"]
+}
+
+# Allow read on the ${role} static role for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/static-roles/${role}" {
+	capabilities = ["read"]
+}
+

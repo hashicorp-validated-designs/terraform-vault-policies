@@ -1,0 +1,16 @@
+
+# Allow listing of dynamic roles for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/roles" {
+	capabilities = ["list"]
+}
+
+# Allow access to get dynamic credentials for the ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/creds/${role}" {
+	capabilities = ["read"]
+}
+
+# Allow access to manage the dynamic credential role ${role} for the db engine at ${db_engine_path}
+path "${namespace}${db_engine_path}/roles/${role}" {
+	capabilities = ["create", "update", "read"]
+}
+

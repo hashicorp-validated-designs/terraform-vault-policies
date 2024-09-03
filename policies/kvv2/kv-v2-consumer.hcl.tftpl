@@ -1,0 +1,27 @@
+
+# Allow listing of secrets for KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/metadata" {
+	capabilities = ["list"]
+}
+
+# Allow reading metadata for the secret at ${kvv2_secret_path} in the KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/metadata/${kvv2_secret_path}" {
+	capabilities = ["read"]
+}
+
+# Allow reading the secret at ${kvv2_secret_path} in the KV v2 engine at ${kvv2_engine_path}
+path "${namespace}${kvv2_engine_path}/data/${kvv2_secret_path}" {
+	capabilities = ["read"]
+}
+
+# Allow reading the secret sub-keys
+path "${namespace}${kvv2_engine_path}/subkeys/${kvv2_secret_path}" {
+	capabilities = ["read"]
+}
+
+# Allow reading secret versions
+path "${namespace}${kvv2_engine_path}/subkeys/${kvv2_secret_path}" {
+	capabilities = ["read"]
+	required_parameters = ["version"]
+}
+
